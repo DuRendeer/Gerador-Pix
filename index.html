@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador PIX - Copia e Cola</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💳 Gerador PIX</h1>
+            <p>Adicione valor aos seus códigos PIX copia e cola</p>
+        </div>
+        
+        <div class="content">
+            <div class="form-group chave-group">
+                <div style="flex: 1;">
+                    <label for="chavePix">📋 Código PIX Copia e Cola</label>
+                    <input type="text" id="chavePix" placeholder="Cole aqui seu código PIX copia e cola (ex: 00020101021126440014br.gov.bcb.pix...)">
+                </div>
+                <button type="button" class="btn-secondary" onclick="usarChavePadrao()">
+                    📋 Usar Exemplo
+                </button>
+            </div>
+            
+            <div class="form-group">
+                <label for="valor">💰 Valor (R$)</label>
+                <input type="number" id="valor" placeholder="Digite o valor..." step="0.01" min="0.01">
+            </div>
+            
+            <button class="btn-primary" id="gerarBtn">
+                🎯 Gerar PIX + QR Code
+            </button>
+            
+            <div id="status"></div>
+            
+            <div id="resultado" class="result">
+                <h3>✅ PIX Gerado com Sucesso!</h3>
+                
+                <div id="infoChave" class="info-chave">
+                    <!-- Informações do código serão inseridas aqui pelo JavaScript -->
+                </div>
+                
+                <div class="qr-container">
+                    <div class="qr-code">
+                        <canvas id="qrcode"></canvas>
+                    </div>
+                    <p class="qr-instruction">📱 Escaneie com seu banco ou copie o código</p>
+                </div>
+                
+                <div class="code-section">
+                    <h4>📋 Código PIX:</h4>
+                    <div id="codigoPix" class="pix-code"></div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn-copy" onclick="copiarCodigo()">
+                        📝 Copiar Código
+                    </button>
+                    <button class="btn-download" onclick="baixarQRCode()">
+                        💾 Baixar QR Code
+                    </button>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h4>ℹ️ Como usar:</h4>
+                <ul>
+                    <li><strong>1. Cole um código PIX:</strong> Use um código "copia e cola" que você já possui</li>
+                    <li><strong>2. Defina o valor:</strong> Digite o valor que deseja cobrar</li>
+                    <li><strong>3. Gere o PIX:</strong> Clique em "Gerar PIX + QR Code"</li>
+                    <li><strong>4. Compartilhe:</strong> Use o QR Code ou copie o código gerado</li>
+                </ul>
+                
+                <div class="importante-box">
+                    <h5>⚠️ IMPORTANTE:</h5>
+                    <p><strong>Este gerador funciona APENAS com códigos PIX "copia e cola".</strong></p>
+                    <p>Códigos copia e cola começam com "000201" e contêm "br.gov.bcb.pix".</p>
+                    <p>Para obter um código base, gere um PIX sem valor no app do seu banco.</p>
+                </div>
+                
+                <p class="tip">💡 <strong>Dica:</strong> Salve um código base sem valor para reutilizar sempre!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
